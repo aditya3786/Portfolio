@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .card {
+    @apply bg-apple-gray-900/40 border border-apple-gray-800;
+  }
+  
+  .text-secondary {
+    @apply text-apple-gray-300;
+  }
+  
+  .section-padding {
+    @apply py-24 md:py-32 px-8;
+  }
+}
