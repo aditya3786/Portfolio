@@ -35,7 +35,7 @@ const projects = [
     description: "Real-time driver drowsiness detection using CNN and eye-tracking with OpenCV. Deployed with alarm alerts for vehicle safety and accident prevention.",
     image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
     tech: ["Python", "OpenCV", "TensorFlow", "CNN", "Dlib", "Real-time Processing"],
-    github: "https://github.com/aditya3786",
+    github: "https://github.com/aditya3786/Driver-Drowsiness-Detection",
     live: "#"
   }
 ]

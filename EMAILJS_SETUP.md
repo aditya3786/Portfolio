@@ -22,7 +22,7 @@ Your contact form is now integrated with EmailJS! Follow these steps to make it 
 1. Go to **Email Templates**
 2. Click **Create New Template**
 3. Name it: `portfolio_contact_form`
-4. Set the recipient email to: `adityapathania2@gmail.com`
+4. Set the recipient email to: `adityapathania6666@gmail.com`
 
 ### Template Content:
 ```
@@ -68,7 +68,7 @@ The contact form should now send emails!
 
 1. Fill out the contact form
 2. Click "Send Message"
-3. Check your email (adityapathania2@gmail.com) for the message
+3. Check your email (adityapathania6666@gmail.com) for the message
 4. You should receive an email within seconds
 
 ## ✨ What's Included

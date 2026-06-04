@@ -34,7 +34,7 @@ export default function Contact() {
         import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
         {
-          to_email: 'adityapathania2@gmail.com',
+          to_email: 'adityapathania6666@gmail.com',
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
@@ -100,7 +100,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-apple-gray-500">Email</p>
-                    <p className="font-normal text-apple-gray-300">adityapathania2@gmail.com</p>
+                    <p className="font-normal text-apple-gray-300">adityapathania6666@gmail.com</p>
                   </div>
                 </div>
 
