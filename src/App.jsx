@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import Lenis from '@studio-freight/lenis'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
+
+const Hero = lazy(() => import('./components/Hero'))
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -53,7 +54,9 @@ function App() {
       {/* Main Content */}
       <main id="main-content" tabIndex="-1">
         <section id="home">
-          <Hero />
+          <Suspense fallback={<div className="h-screen bg-black" aria-label="Loading hero section" />}>
+            <Hero />
+          </Suspense>
         </section>
         
         <About />
