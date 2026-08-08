@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const projects = [
@@ -9,7 +9,12 @@ const projects = [
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
     tech: ["Python", "Gemini", "LangChain", "FAISS", "Streamlit", "Hugging Face", "Plotly"],
     github: "https://github.com/aditya3786/customer-service-chatbot-llm",
-    live: "#"
+    live: "#",
+    highlights: [
+      "Six task-focused AI workflows in one Streamlit application.",
+      "Grounded retrieval using Hugging Face embeddings and FAISS vector search.",
+      "Multimodal visual reasoning and multilingual conversations powered by Gemini."
+    ]
   },
   {
     id: 2,
@@ -49,14 +54,14 @@ const projects = [
   }
 ]
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onOpen }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-      className="bg-apple-gray-900/40 border border-apple-gray-800 rounded-2xl overflow-hidden hover:border-apple-gray-700 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+      className="bg-apple-gray-900/40 border border-apple-gray-800 rounded-2xl overflow-hidden hover:border-apple-gray-700 hover:scale-[1.02] transition-all duration-300"
     >
       {/* Project Image */}
       <div className="relative h-64 overflow-hidden bg-apple-gray-800">
@@ -90,9 +95,18 @@ function ProjectCard({ project, index }) {
         </div>
 
         {/* Links */}
-        <div className="flex gap-4">
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={() => onOpen(project)}
+            className="w-full py-3 text-center border border-apple-gray-700 rounded-full font-medium hover:bg-apple-gray-800 transition-colors"
+          >
+            View details
+          </button>
           <a 
             href={project.github}
+            target="_blank"
+            rel="noreferrer"
             className="w-full py-3 text-center bg-apple-blue rounded-full font-medium hover:bg-opacity-90 transition-opacity"
           >
             View on GitHub
@@ -103,8 +117,67 @@ function ProjectCard({ project, index }) {
   )
 }
 
-export default function Projects() {
+function ProjectModal({ project, onClose }) {
+  if (!project) return null
+
+  const highlights = project.highlights || [
+    "Built as a focused AI/ML application with a modern, practical tech stack.",
+    "Designed to solve a real-world problem through an end-to-end implementation.",
+    "Source code and implementation details are available on GitHub."
+  ]
+
   return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center p-5 bg-black/80 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      role="presentation"
+    >
+      <motion.article
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 24, scale: 0.98 }}
+        transition={{ duration: 0.24 }}
+        onClick={(event) => event.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-apple-gray-700 bg-apple-gray-900 shadow-2xl"
+      >
+        <div className="relative h-56 sm:h-72">
+          <img src={project.image} alt="" className="w-full h-full object-cover opacity-70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-apple-gray-900 via-transparent to-transparent" />
+          <button type="button" onClick={onClose} aria-label="Close project details" className="absolute top-5 right-5 h-10 w-10 rounded-full bg-black/60 text-xl hover:bg-black transition-colors">
+            ×
+          </button>
+        </div>
+        <div className="p-6 sm:p-10 -mt-16 relative">
+          <p className="text-apple-blue font-medium mb-3">PROJECT OVERVIEW</p>
+          <h3 id="project-modal-title" className="text-3xl sm:text-5xl font-semibold tracking-tight mb-5">{project.title}</h3>
+          <p className="text-lg text-apple-gray-300 leading-relaxed mb-8">{project.description}</p>
+          <h4 className="text-xl font-semibold mb-4">What I built</h4>
+          <ul className="space-y-3 text-apple-gray-300 mb-8">
+            {highlights.map((highlight) => <li key={highlight} className="flex gap-3"><span className="text-apple-blue">•</span>{highlight}</li>)}
+          </ul>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {project.tech.map((tech) => <span key={tech} className="px-3 py-1 text-sm bg-apple-gray-800 text-apple-gray-300 rounded-full">{tech}</span>)}
+          </div>
+          <a href={project.github} target="_blank" rel="noreferrer" className="inline-block px-6 py-3 bg-apple-blue rounded-full font-medium hover:bg-opacity-90 transition-opacity">
+            View source on GitHub
+          </a>
+        </div>
+      </motion.article>
+    </motion.div>
+  )
+}
+
+export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null)
+
+  return (
+    <>
     <section id="projects" className="min-h-screen section-padding relative overflow-hidden bg-black">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -125,10 +198,12 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard key={project.id} project={project} index={index} onOpen={setSelectedProject} />
           ))}
         </div>
       </div>
     </section>
+    <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+    </>
   )
 }
