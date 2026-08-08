@@ -11,6 +11,7 @@ export default function Contact() {
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' })
+  const [emailCopied, setEmailCopied] = useState(false)
 
   // Initialize EmailJS
   useEffect(() => {
@@ -61,6 +62,16 @@ export default function Contact() {
     }
   }
 
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('adityapathania6666@gmail.com')
+      setEmailCopied(true)
+      setTimeout(() => setEmailCopied(false), 2000)
+    } catch (error) {
+      console.error('Could not copy email:', error)
+    }
+  }
+
   return (
     <section id="contact" className="min-h-screen section-padding relative overflow-hidden bg-black">
       <div className="max-w-5xl mx-auto relative z-10">
@@ -98,11 +109,16 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <div>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <div>
                     <p className="text-sm text-apple-gray-500">Email</p>
                     <a href="mailto:adityapathania6666@gmail.com" className="font-normal text-apple-gray-300 hover:text-apple-blue transition-colors">
                       adityapathania6666@gmail.com
                     </a>
+                    </div>
+                    <button type="button" onClick={copyEmail} className="rounded-full border border-apple-gray-700 px-3 py-1 text-xs text-apple-gray-300 hover:border-apple-blue hover:text-white transition-colors">
+                      {emailCopied ? 'Copied!' : 'Copy'}
+                    </button>
                   </div>
                 </div>
 
