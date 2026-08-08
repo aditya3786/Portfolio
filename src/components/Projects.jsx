@@ -23,7 +23,12 @@ const projects = [
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
     tech: ["Python", "FastAPI", "LangChain", "Pinecone", "Groq", "Docker", "JWT"],
     github: "https://github.com/aditya3786/Orin_Agent",
-    live: "#"
+    live: "#",
+    highlights: [
+      "Built a domain-adaptive RAG agent for reliable organization-specific query resolution.",
+      "Connected LangChain orchestration to Pinecone vector search for grounded responses.",
+      "Implemented a FastAPI backend with JWT authentication and Docker-ready deployment."
+    ]
   },
   {
     id: 3,
@@ -32,7 +37,12 @@ const projects = [
     image: "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&h=600&fit=crop",
     tech: ["Python", "YOLOv8", "TensorFlow", "OpenCV", "ESP32", "Firebase", "IoT"],
     github: "https://github.com/aditya3786/the-fire-detector",
-    live: "#"
+    live: "#",
+    highlights: [
+      "Developed real-time fire detection using fine-tuned YOLOv8 and a custom CNN model.",
+      "Integrated ESP32-CAM edge hardware to capture and process live visual signals.",
+      "Connected Firebase cloud alerts for fast remote notification and monitoring."
+    ]
   },
   {
     id: 4,
@@ -41,7 +51,12 @@ const projects = [
     image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",
     tech: ["Hugging Face", "BERT", "Transformers", "Scikit-Learn", "Python"],
     github: "https://github.com/aditya3786/QUESTION-ANSWERING---BERT",
-    live: "#"
+    live: "#",
+    highlights: [
+      "Created a transformer-based question-answering workflow with BERT.",
+      "Applied NLP preprocessing and feature extraction for downstream text analysis.",
+      "Combined sentiment analysis, text classification, and answer generation in one system."
+    ]
   },
   {
     id: 5,
@@ -50,7 +65,12 @@ const projects = [
     image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
     tech: ["Python", "OpenCV", "TensorFlow", "CNN", "Dlib", "Real-time Processing"],
     github: "https://github.com/aditya3786/Driver-Drowsiness-Detection",
-    live: "#"
+    live: "#",
+    highlights: [
+      "Built a real-time safety system to identify signs of driver fatigue from video input.",
+      "Used CNN-based eye-state detection and OpenCV facial landmark tracking.",
+      "Added alarm-based feedback to support immediate intervention and accident prevention."
+    ]
   }
 ]
 
