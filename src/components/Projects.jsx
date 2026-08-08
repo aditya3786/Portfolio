@@ -93,6 +93,8 @@ function ProjectCard({ project, index, onOpen }) {
         <img 
           src={project.image} 
           alt={project.title}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover"
         />
       </div>
@@ -183,7 +185,7 @@ function ProjectModal({ project, onClose }) {
         className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-apple-gray-700 bg-apple-gray-900 shadow-2xl"
       >
         <div className="relative h-56 sm:h-72">
-          <img src={project.image} alt="" className="w-full h-full object-cover opacity-70" />
+          <img src={project.image} alt="" decoding="async" className="w-full h-full object-cover opacity-70" />
           <div className="absolute inset-0 bg-gradient-to-t from-apple-gray-900 via-transparent to-transparent" />
           <button type="button" onClick={onClose} aria-label="Close project details" className="absolute top-5 right-5 h-10 w-10 rounded-full bg-black/60 text-xl hover:bg-black transition-colors">
             ×
