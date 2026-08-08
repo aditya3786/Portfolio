@@ -37,6 +37,15 @@ const projects = [
     tech: ["Python", "OpenCV", "TensorFlow", "CNN", "Dlib", "Real-time Processing"],
     github: "https://github.com/aditya3786/Driver-Drowsiness-Detection",
     live: "#"
+  },
+  {
+    id: 5,
+    title: "AI Assistant Suite",
+    description: "A full-stack Streamlit AI assistant spanning sentiment-aware support, medical Q&A, automated knowledge-base updates, arXiv research, multimodal vision, and multilingual conversations.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+    tech: ["Python", "Gemini", "LangChain", "FAISS", "Streamlit", "Hugging Face", "Plotly"],
+    github: "https://github.com/aditya3786/customer-service-chatbot-llm",
+    live: "#"
   }
 ]
 
