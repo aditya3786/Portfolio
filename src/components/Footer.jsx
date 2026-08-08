@@ -107,7 +107,7 @@ export default function Footer() {
           </p>
           
           <p className="text-gray-400 text-sm">
-            Built with <span className="text-neon-cyan">React</span>, <span className="text-neon-purple">Three.js</span> & <span className="text-neon-blue">TensorFlow</span>
+            Built with <span className="text-neon-cyan">React</span>, <span className="text-neon-purple">Three.js</span> & <span className="text-neon-blue">Vite</span>
           </p>
         </motion.div>
       </div>
