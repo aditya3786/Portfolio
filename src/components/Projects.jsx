@@ -8,6 +8,7 @@ const projects = [
     description: "A full-stack Streamlit AI assistant spanning sentiment-aware support, medical Q&A, automated knowledge-base updates, arXiv research, multimodal vision, and multilingual conversations.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
     tech: ["Python", "Gemini", "LangChain", "FAISS", "Streamlit", "Hugging Face", "Plotly"],
+    categories: ["LLM & NLP", "Backend"],
     github: "https://github.com/aditya3786/customer-service-chatbot-llm",
     live: "#",
     highlights: [
@@ -22,6 +23,7 @@ const projects = [
     description: "Domain-adaptive RAG AI system with LangChain orchestration, Pinecone vector indexing, and FastAPI backend with JWT authentication for organizational query resolution.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
     tech: ["Python", "FastAPI", "LangChain", "Pinecone", "Groq", "Docker", "JWT"],
+    categories: ["LLM & NLP", "Backend"],
     github: "https://github.com/aditya3786/Orin_Agent",
     live: "#",
     highlights: [
@@ -36,6 +38,7 @@ const projects = [
     description: "Real-time fire detection using fine-tuned YOLOv8 and custom CNN. Integrated ESP32-CAM with Firebase for cloud-based alerts and edge deployment.",
     image: "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&h=600&fit=crop",
     tech: ["Python", "YOLOv8", "TensorFlow", "OpenCV", "ESP32", "Firebase", "IoT"],
+    categories: ["Computer Vision", "IoT"],
     github: "https://github.com/aditya3786/the-fire-detector",
     live: "#",
     highlights: [
@@ -50,6 +53,7 @@ const projects = [
     description: "Natural language processing system for sentiment analysis, text classification, and feature extraction using transformer models.",
     image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",
     tech: ["Hugging Face", "BERT", "Transformers", "Scikit-Learn", "Python"],
+    categories: ["LLM & NLP"],
     github: "https://github.com/aditya3786/QUESTION-ANSWERING---BERT",
     live: "#",
     highlights: [
@@ -64,6 +68,7 @@ const projects = [
     description: "Real-time driver drowsiness detection using CNN and eye-tracking with OpenCV. Deployed with alarm alerts for vehicle safety and accident prevention.",
     image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
     tech: ["Python", "OpenCV", "TensorFlow", "CNN", "Dlib", "Real-time Processing"],
+    categories: ["Computer Vision"],
     github: "https://github.com/aditya3786/Driver-Drowsiness-Detection",
     live: "#",
     highlights: [
@@ -195,6 +200,11 @@ function ProjectModal({ project, onClose }) {
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
+  const [activeFilter, setActiveFilter] = useState('All')
+  const filters = ['All', 'LLM & NLP', 'Computer Vision', 'IoT', 'Backend']
+  const visibleProjects = activeFilter === 'All'
+    ? projects
+    : projects.filter((project) => project.categories.includes(activeFilter))
 
   return (
     <>
@@ -216,8 +226,21 @@ export default function Projects() {
           </p>
         </motion.div>
 
+        <div className="flex flex-wrap justify-center gap-3 mb-14">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => setActiveFilter(filter)}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${activeFilter === filter ? 'bg-apple-blue text-white' : 'bg-apple-gray-900 border border-apple-gray-700 text-apple-gray-300 hover:bg-apple-gray-800'}`}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} onOpen={setSelectedProject} />
           ))}
         </div>
