@@ -7,6 +7,7 @@ import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
+import ScrollControls from './components/ScrollControls'
 
 const Hero = lazy(() => import('./components/Hero'))
 
@@ -66,6 +67,7 @@ function App() {
       </main>
 
       <Footer />
+      <ScrollControls />
     </div>
   )
 }
