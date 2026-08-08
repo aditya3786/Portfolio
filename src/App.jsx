@@ -13,24 +13,26 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll
     const lenis = new Lenis({
-      duration: 0.8,
+      duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.2,
-      touchMultiplier: 2.5,
+      lerp: 0.09,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.5,
     })
 
-    function raf(time) {
+    let animationFrameId
+    const raf = (time) => {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      animationFrameId = requestAnimationFrame(raf)
     }
 
-    requestAnimationFrame(raf)
+    animationFrameId = requestAnimationFrame(raf)
 
     return () => {
+      cancelAnimationFrame(animationFrameId)
       lenis.destroy()
     }
   }, [])

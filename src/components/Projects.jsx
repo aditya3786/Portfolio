@@ -4,6 +4,15 @@ import { motion } from 'framer-motion'
 const projects = [
   {
     id: 1,
+    title: "AI Assistant Suite",
+    description: "A full-stack Streamlit AI assistant spanning sentiment-aware support, medical Q&A, automated knowledge-base updates, arXiv research, multimodal vision, and multilingual conversations.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+    tech: ["Python", "Gemini", "LangChain", "FAISS", "Streamlit", "Hugging Face", "Plotly"],
+    github: "https://github.com/aditya3786/customer-service-chatbot-llm",
+    live: "#"
+  },
+  {
+    id: 2,
     title: "ORIN AI Agent System",
     description: "Domain-adaptive RAG AI system with LangChain orchestration, Pinecone vector indexing, and FastAPI backend with JWT authentication for organizational query resolution.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
@@ -12,7 +21,7 @@ const projects = [
     live: "#"
   },
   {
-    id: 2,
+    id: 3,
     title: "IoT Fire Detection System",
     description: "Real-time fire detection using fine-tuned YOLOv8 and custom CNN. Integrated ESP32-CAM with Firebase for cloud-based alerts and edge deployment.",
     image: "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&h=600&fit=crop",
@@ -21,7 +30,7 @@ const projects = [
     live: "#"
   },
   {
-    id: 3,
+    id: 4,
     title: "Question Answering Chatbot with BERT",
     description: "Natural language processing system for sentiment analysis, text classification, and feature extraction using transformer models.",
     image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",
@@ -30,21 +39,12 @@ const projects = [
     live: "#"
   },
   {
-    id: 4,
+    id: 5,
     title: "Driver Drowsiness Detection System",
     description: "Real-time driver drowsiness detection using CNN and eye-tracking with OpenCV. Deployed with alarm alerts for vehicle safety and accident prevention.",
     image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
     tech: ["Python", "OpenCV", "TensorFlow", "CNN", "Dlib", "Real-time Processing"],
     github: "https://github.com/aditya3786/Driver-Drowsiness-Detection",
-    live: "#"
-  },
-  {
-    id: 5,
-    title: "AI Assistant Suite",
-    description: "A full-stack Streamlit AI assistant spanning sentiment-aware support, medical Q&A, automated knowledge-base updates, arXiv research, multimodal vision, and multilingual conversations.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-    tech: ["Python", "Gemini", "LangChain", "FAISS", "Streamlit", "Hugging Face", "Plotly"],
-    github: "https://github.com/aditya3786/customer-service-chatbot-llm",
     live: "#"
   }
 ]
