@@ -16,6 +16,28 @@
   html {
     scroll-behavior: auto;
   }
+
+  :focus-visible {
+    outline: 2px solid #007AFF;
+    outline-offset: 4px;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 1rem;
+  left: 1rem;
+  transform: translateY(-200%);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: #007AFF;
+  color: #fff;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 /* Lenis owns page scrolling so wheel, touch, and anchor navigation share one smooth motion. */
@@ -33,6 +55,17 @@ html.lenis {
 
 .lenis.lenis-stopped {
   overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer utilities {

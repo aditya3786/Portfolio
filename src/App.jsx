@@ -13,6 +13,10 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return undefined
+    }
+
     const lenis = new Lenis({
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -43,10 +47,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Navbar />
       
       {/* Main Content */}
-      <main>
+      <main id="main-content" tabIndex="-1">
         <section id="home">
           <Hero />
         </section>

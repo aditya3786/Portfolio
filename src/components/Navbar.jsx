@@ -54,7 +54,10 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+          aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
+          className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-apple-blue"
         >
           <span
             className={`w-6 h-0.5 bg-white transition-all ${
@@ -76,7 +79,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden backdrop-blur-md bg-black/40">
+        <div id="mobile-navigation" className="md:hidden backdrop-blur-md bg-black/40">
           <div className="px-8 py-6 flex flex-col gap-6">
             {navItems.map((item) => (
               <a

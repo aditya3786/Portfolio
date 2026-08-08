@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 const projects = [
@@ -143,6 +143,17 @@ function ProjectCard({ project, index, onOpen }) {
 }
 
 function ProjectModal({ project, onClose }) {
+  useEffect(() => {
+    if (!project) return undefined
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [project, onClose])
+
   if (!project) return null
 
   const highlights = project.highlights || [
