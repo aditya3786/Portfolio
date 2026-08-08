@@ -79,6 +79,7 @@ export default function Hero() {
   const heroRef = useRef()
   const scrollProgressRef = useRef(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const rafRef = useRef(null)
 
   // Check if mobile device
@@ -90,6 +91,15 @@ export default function Hero() {
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches)
+
+    updatePreference()
+    mediaQuery.addEventListener('change', updatePreference)
+    return () => mediaQuery.removeEventListener('change', updatePreference)
   }, [])
 
   useEffect(() => {
@@ -136,7 +146,7 @@ export default function Hero() {
       className="relative h-screen w-full overflow-hidden"
     >
       {/* 3D Canvas Background - Desktop Only */}
-      {!isMobile && (
+      {!isMobile && !prefersReducedMotion && (
         <div className="absolute inset-0">
           <Canvas
             gl={{ antialias: false, powerPreference: 'high-performance' }}
@@ -155,7 +165,7 @@ export default function Hero() {
       )}
 
       {/* Mobile Gradient Background */}
-      {isMobile && (
+      {(isMobile || prefersReducedMotion) && (
         <div className="absolute inset-0 bg-gradient-to-br from-black via-apple-gray-900 to-black" />
       )}
 
