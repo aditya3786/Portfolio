@@ -100,7 +100,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-apple-gray-500">Email</p>
-                    <p className="font-normal text-apple-gray-300">adityapathania6666@gmail.com</p>
+                    <a href="mailto:adityapathania6666@gmail.com" className="font-normal text-apple-gray-300 hover:text-apple-blue transition-colors">
+                      adityapathania6666@gmail.com
+                    </a>
                   </div>
                 </div>
 
@@ -112,7 +114,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-apple-gray-500">Phone</p>
-                    <p className="font-normal text-apple-gray-300">+91 8847549647</p>
+                    <a href="tel:+918847549647" className="font-normal text-apple-gray-300 hover:text-apple-blue transition-colors">
+                      +91 8847549647
+                    </a>
                   </div>
                 </div>
 
