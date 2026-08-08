@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -18,6 +19,23 @@ export default function Navbar() {
       setIsMobileMenuOpen(false)
     }
   }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries.find((entry) => entry.isIntersecting)
+        if (visibleSection) setActiveSection(visibleSection.target.id)
+      },
+      { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+    )
+
+    navItems.forEach(({ href }) => {
+      const section = document.querySelector(href)
+      if (section) observer.observe(section)
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30">
@@ -40,11 +58,12 @@ export default function Navbar() {
             <a
               key={item.name}
               href={item.href}
+              aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection(item.href)
               }}
-              className="text-sm font-normal text-white/80 hover:opacity-60 transition-all duration-200 cursor-pointer"
+              className={`text-sm font-normal transition-all duration-200 cursor-pointer ${activeSection === item.href.slice(1) ? 'text-white' : 'text-white/80 hover:opacity-60'}`}
             >
               {item.name}
             </a>
@@ -85,11 +104,12 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
+                aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
                 onClick={(e) => {
                   e.preventDefault()
                   scrollToSection(item.href)
                 }}
-                className="text-base font-normal text-white/80 hover:opacity-60 hover:translate-x-1 transition-all duration-200 cursor-pointer"
+                className={`text-base font-normal transition-all duration-200 cursor-pointer ${activeSection === item.href.slice(1) ? 'text-white translate-x-1' : 'text-white/80 hover:opacity-60 hover:translate-x-1'}`}
               >
                 {item.name}
               </a>
