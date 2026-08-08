@@ -207,6 +207,13 @@ export default function Hero() {
             >
               View work →
             </a>
+            <div className="mt-8 flex items-center justify-center gap-5 text-sm text-apple-gray-400">
+              <a href="https://github.com/aditya3786" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
+              <span aria-hidden="true">·</span>
+              <a href="https://linkedin.com/in/aditya-pathania-680a41247" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+              <span aria-hidden="true">·</span>
+              <a href="mailto:adityapathania6666@gmail.com" className="hover:text-white transition-colors">Email</a>
+            </div>
           </motion.div>
         </div>
       </div>
